@@ -1,0 +1,88 @@
+{% extends 'Base.html' %}
+
+{% block container %}
+
+
+  <main class="container mt-3">
+    <div class="card my-4 mx-auto">
+      <div class="card-body m-2 m-md-4">
+        <article class="row">
+          <div class="col-5"><img src={{teachers.picture}} class="img-fluid" alt=""></div>
+          <div class="col-7">
+
+            <section class="teacher=info">
+
+              <h1 class="h2">{{teachers.name}}</h1>
+              <p>{% for goal_to_study in teachers.goals %}<span class="badge badge-secondary mr-2">{{goals[goal_to_study]}}</span> {% endfor %}Рейтинг: {{teachers.rating}} Ставка: {{teachers.price}} / час</p>
+              <p>   {{teachers.about}} </p>
+
+            </section>
+
+            <section class="available">
+
+              <h4 class="mb-4 mt-5">Записаться на пробный урок </h4>
+
+              <h6 class="mt-4">Понедельник </h6>
+              {% for free_hours,truth in teachers.free.mon.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/mon/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+              <h6 class="mt-4">Вторник</h6>
+              {% for free_hours,truth in teachers.free.tue.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/tue/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+              <h6 class="mt-4">Среда</h6>
+              {% for free_hours,truth in teachers.free.wed.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/wed/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+              <h6 class="mt-4">Четверг</h6>
+              {% for free_hours,truth in teachers.free.thu.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/thu/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+              <h6 class="mt-4">Пятница</h6>
+              {% for free_hours,truth in teachers.free.fri.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/fri/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+              <h6 class="mt-4">Суббота</h6>
+              {% for free_hours,truth in teachers.free.sat.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/sat/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+              <h6 class="mt-4">Воскресенье</h6>
+              {% for free_hours,truth in teachers.free.sun.items() %}
+                {% if truth ==True %}
+                  <a href="/booking/{{teachers.id}}/sun/{{free_hours}}" class="btn btn-outline-success mr-2">{{free_hours}} свободно</a>
+                {% endif %}
+              {% endfor %}
+
+            </section>
+
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+{% endblock %}
